@@ -64,7 +64,7 @@ class PermissionController extends Controller
 	{
 		try {
 			return response(['permission' => Permission::findOrFail($id)]);
-		} catch (ModelNotFoundException) {
+		} catch (ModelNotFoundException $ex) {
 			return response(['message' => 'Permission not found'], 404);
 		}
 	}
@@ -86,7 +86,7 @@ class PermissionController extends Controller
 				'message' => 'Permission updated successfully',
 				'permission' => $permission
 			]);
-		} catch (ModelNotFoundException) {
+		} catch (ModelNotFoundException $ex) {
 			return response(['message' => 'Permission not found'], 404);
 		} catch (Exception $ex) {
 			return response([
@@ -108,7 +108,7 @@ class PermissionController extends Controller
 			Permission::findOrFail($id)->delete();
 
 			return response(['message' => 'Permission deleted']);
-		} catch (ModelNotFoundException) {
+		} catch (ModelNotFoundException $ex) {
 			return response(['error' => 'Permission not found'], 404);
 		}
 	}

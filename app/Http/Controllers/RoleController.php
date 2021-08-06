@@ -68,8 +68,8 @@ class RoleController extends Controller
 	{
 		try {
 			return response(['role' => Role::with(['permissions'])->findOrFail($id)]);
-		} catch (Exception) {
-			return response(['error' => 'Role not found'], 404);
+		} catch (ModelNotFoundException $ex) {
+			return response(['message' => 'Role not found'], 404);
 		}
 	}
 
@@ -94,7 +94,7 @@ class RoleController extends Controller
 				'message' => 'Role updated successfully',
 				'role' => $role
 			]);
-		} catch (ModelNotFoundException) {
+		} catch (ModelNotFoundException $ex) {
 			return response(['message' => 'Role not found'], 404);
 		} catch (Exception $ex) {
 			return response(['message' => 'Ocorreu um erro', 'error' => $ex->getMessage()]);
@@ -115,7 +115,7 @@ class RoleController extends Controller
 			Role::findOrFail($id)->delete();
 
 			return response(['message' => 'Role deleted']);
-		} catch (ModelNotFoundException) {
+		} catch (ModelNotFoundException $ex) {
 			return response(['error' => 'Role not found'], 404);
 		}
 	}
