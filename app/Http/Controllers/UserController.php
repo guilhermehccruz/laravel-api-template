@@ -65,7 +65,7 @@ class UserController extends Controller
 	{
 		try {
 			return response(['user' => User::with(['roles', 'permissions'])->findOrFail($id)]);
-		} catch (Exception) {
+		} catch (ModelNotFoundException $ex) {
 			return response(['error' => 'User not found'], 404);
 		}
 	}
@@ -100,7 +100,7 @@ class UserController extends Controller
 				'message' => 'User updated successfully',
 				'user' => $user
 			]);
-		} catch (ModelNotFoundException) {
+		} catch (ModelNotFoundException $ex) {
 			return response(['error' => 'User not found'], 404);
 		} catch (Exception $ex) {
 			return response([
@@ -122,7 +122,7 @@ class UserController extends Controller
 			User::findOrFail($id)->delete();
 
 			return response(['message' => 'User deleted']);
-		} catch (ModelNotFoundException) {
+		} catch (ModelNotFoundException $ex) {
 			return response(['error' => 'User not found'], 404);
 		}
 	}
