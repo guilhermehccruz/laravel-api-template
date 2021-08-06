@@ -1,0 +1,10 @@
+{
+  "_id": "spc_f432d92d68834326915e61a9d87514f2",
+  "parentId": "wrk_9b8569ecfffc47e7835fe9b8fbe47ec9",
+  "modified": 1600000000000,
+  "created": 1600000000000,
+  "fileName": "labeltag",
+  "contents": "",
+  "contentType": "yaml",
+  "_type": "api_spec"
+}

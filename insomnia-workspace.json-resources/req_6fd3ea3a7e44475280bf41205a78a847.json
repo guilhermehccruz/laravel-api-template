@@ -1,0 +1,46 @@
+{
+  "_id": "req_6fd3ea3a7e44475280bf41205a78a847",
+  "parentId": "fld_62367e1c757944819a2339ee33a767f9",
+  "modified": 1600000000000,
+  "created": 1600000000000,
+  "url": "{{ _.url }}/permissions/13",
+  "name": "Update Permissions",
+  "description": "Update a permission\n\n<!-- RESPONSE -->\n{\n    \"message\": \"Permission updated successfully\",\n    \"permission\": {\n        \"id\": 13,\n        \"name\": \"teste update\",\n        \"guard_name\": \"web\",\n        \"created_at\": \"2021-08-06T06:34:19.000000Z\",\n        \"updated_at\": \"2021-08-06T06:38:45.000000Z\"\n    }\n}\n<!-- ENDRESPONSE -->",
+  "method": "PUT",
+  "body": {
+    "mimeType": "application/json",
+    "text": [
+      "{",
+      "\t\"name\": \"teste update\"",
+      "}"
+    ]
+  },
+  "parameters": [],
+  "headers": [
+    {
+      "id": "pair_ca8978166e4c4f44ae2daed0f3a37937",
+      "name": "Accept",
+      "value": "application/json",
+      "description": ""
+    },
+    {
+      "id": "pair_af19e790f667410a8f854050f6230d51",
+      "name": "Content-Type",
+      "value": "application/json",
+      "description": ""
+    }
+  ],
+  "authentication": {
+    "type": "bearer",
+    "token": "{{token}}"
+  },
+  "metaSortKey": -1626366898183,
+  "isPrivate": false,
+  "settingStoreCookies": true,
+  "settingSendCookies": true,
+  "settingDisableRenderRequestBody": false,
+  "settingEncodeUrl": true,
+  "settingRebuildPath": true,
+  "settingFollowRedirects": "global",
+  "_type": "request"
+}

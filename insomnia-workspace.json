@@ -1,0 +1,803 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2020-01-01T00:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2021.4.1",
+  "resources": [
+    {
+      "_id": "wrk_9b8569ecfffc47e7835fe9b8fbe47ec9",
+      "parentId": null,
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "name": "Laravel",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "fld_62367e1c757944819a2339ee33a767f9",
+      "parentId": "wrk_9b8569ecfffc47e7835fe9b8fbe47ec9",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "name": "Permissions",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1626066838019.5,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_7d6febcd4fbe4a3f8be8b73994c12a44",
+      "parentId": "wrk_9b8569ecfffc47e7835fe9b8fbe47ec9",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "name": "Auth",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1626366851991,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_df3b31a4bcfb42fa90796d7c29eefaf6",
+      "parentId": "wrk_9b8569ecfffc47e7835fe9b8fbe47ec9",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "name": "Roles",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1626366851891,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_ef951f102f624a62a36451310323bb43",
+      "parentId": "wrk_9b8569ecfffc47e7835fe9b8fbe47ec9",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "name": "Users",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1626366851941,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_00bb5842e08049169232dd271c346ac5",
+      "parentId": "fld_62367e1c757944819a2339ee33a767f9",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "url": "{{ _.url }}/permissions",
+      "name": "Index Permissions",
+      "description": "List all permissions\n\n<!-- RESPONSE -->\n{\n    \"permission\": [\n        {\n            \"id\": 1,\n            \"name\": \"show-users\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"create-users\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"update-users\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"delete-users\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"show-roles\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"create-roles\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"update-roles\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 8,\n            \"name\": \"delete-roles\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 9,\n            \"name\": \"show-permissions\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"create-permissions\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 11,\n            \"name\": \"update-permissions\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 12,\n            \"name\": \"delete-permissions\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        }\n    ]\n}\n<!-- ENDRESPONSE -->",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_ca70571ff25848d0bc287c5182b2744e",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_bebdc0d25cba45da8b7076008df39c9a",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{token}}"
+      },
+      "metaSortKey": -1626366898383,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_01b5a84f94f1493eb2b79c6f30286146",
+      "parentId": "fld_ef951f102f624a62a36451310323bb43",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "url": "{{ _.url }}/users",
+      "name": "Index Users",
+      "description": "List all users with pagination\n\n<!-- RESPONSE -->\n{\n    \"users\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 1,\n                \"name\": \"admin\",\n                \"email\": \"admin@email.com\",\n                \"created_at\": \"2021-08-06T06:00:47.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:47.000000Z\",\n                \"deleted_at\": null,\n                \"roles\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"admin\",\n                        \"guard_name\": \"web\",\n                        \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                        \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                        \"pivot\": {\n                            \"model_id\": 1,\n                            \"role_id\": 1\n                        }\n                    }\n                ],\n                \"permissions\": []\n            },\n            {\n                \"id\": 2,\n                \"name\": \"user\",\n                \"email\": \"user@email.com\",\n                \"created_at\": \"2021-08-06T06:00:47.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:47.000000Z\",\n                \"deleted_at\": null,\n                \"roles\": [\n                    {\n                        \"id\": 2,\n                        \"name\": \"user\",\n                        \"guard_name\": \"web\",\n                        \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                        \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                        \"pivot\": {\n                            \"model_id\": 2,\n                            \"role_id\": 2\n                        }\n                    }\n                ],\n                \"permissions\": []\n            }\n        ],\n        \"first_page_url\": \"http:\\/\\/localhost:8000\\/api\\/users?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http:\\/\\/localhost:8000\\/api\\/users?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http:\\/\\/localhost:8000\\/api\\/users?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http:\\/\\/localhost:8000\\/api\\/users\",\n        \"per_page\": 15,\n        \"prev_page_url\": null,\n        \"to\": 2,\n        \"total\": 2\n    }\n}\n<!-- ENDRESPONSE -->",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_4874a0fb73f2421487bbe72b7ea30270",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": "",
+          "disabled": false
+        },
+        {
+          "id": "pair_e588ce98c4bb4048ad699c9405ca2a55",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{token}}"
+      },
+      "metaSortKey": -1626366898408,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_1a7a11abac71467e922f78be64eb1fba",
+      "parentId": "fld_ef951f102f624a62a36451310323bb43",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "url": "{{ _.url }}/users",
+      "name": "Store User",
+      "description": "Create an user\n\n<!-- RESPONSE -->\n{\n    \"message\": \"User created successfully\",\n    \"user\": {\n        \"name\": \"testes\",\n        \"email\": \"teste1@teste.com\",\n        \"updated_at\": \"2021-08-06T06:01:33.000000Z\",\n        \"created_at\": \"2021-08-06T06:01:33.000000Z\",\n        \"id\": 3,\n        \"roles\": [\n            {\n                \"id\": 1,\n                \"name\": \"admin\",\n                \"guard_name\": \"web\",\n                \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"pivot\": {\n                    \"model_id\": 3,\n                    \"role_id\": 1\n                }\n            }\n        ],\n        \"permissions\": [\n            {\n                \"id\": 1,\n                \"name\": \"show-users\",\n                \"guard_name\": \"web\",\n                \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"pivot\": {\n                    \"model_id\": 3,\n                    \"permission_id\": 1\n                }\n            }\n        ]\n    }\n}\n<!-- ENDRESPONSE -->",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"userData\": {\n\t\t\"name\": \"testes\",\n\t\t\"email\": \"teste1@teste.com\",\n\t\t\"password\": \"teste\",\n\t\t\"password_confirmation\": \"teste\"\n\t},\n\t\"roles\": [\n\t\t\"admin\"\n\t],\n\t\"permissions\": [\n\t\t\"show-users\"\n\t]\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_ca8978166e4c4f44ae2daed0f3a37937",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_72ab8c23897944f2a97f0db53481ef1e",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{token}}"
+      },
+      "metaSortKey": -1626366898358,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_353b79a117d343a1b0efa5813de1f1ae",
+      "parentId": "fld_ef951f102f624a62a36451310323bb43",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "url": "{{ _.url }}/users/3",
+      "name": "Destroy User",
+      "description": "Delete user\n\n<!-- RESPONSE -->\n{\n    \"message\": \"User deleted\"\n}\n<!-- ENDRESPONSE -->",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_bebdc0d25cba45da8b7076008df39c9a",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_0a07405c8d61466e94e199b7de539ad8",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{token}}"
+      },
+      "metaSortKey": -1626324630843,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_4726aa308e7345249a791320b6b44b4c",
+      "parentId": "fld_df3b31a4bcfb42fa90796d7c29eefaf6",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "url": "{{ _.url }}/roles/8",
+      "name": "Destroy Role",
+      "description": "Delete a role \n\n<!-- RESPONSE -->\n{\n    \"message\": \"Role deleted\"\n}\n<!-- ENDRESPONSE -->",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_36f954c00d0c4724b895336fab54b83a",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_bebdc0d25cba45da8b7076008df39c9a",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{token}}"
+      },
+      "metaSortKey": -1626366898133,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_53954bc3e42b4956b6bc6076c7add6d4",
+      "parentId": "fld_62367e1c757944819a2339ee33a767f9",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "url": "{{ _.url }}/permissions/13",
+      "name": "Show Permissions",
+      "description": "Show a specific permission\n\n<!-- RESPONSE -->\n{\n    \"permission\": {\n        \"id\": 13,\n        \"name\": \"teste\",\n        \"guard_name\": \"web\",\n        \"created_at\": \"2021-08-06T06:10:11.000000Z\",\n        \"updated_at\": \"2021-08-06T06:10:11.000000Z\"\n    }\n}\n<!-- ENDRESPONSE -->",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_755af7f5436d41189c2a7041b4d3382d",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_bebdc0d25cba45da8b7076008df39c9a",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{token}}"
+      },
+      "metaSortKey": -1626366898283,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_6542a6ed733544328ce717a7b3e54461",
+      "parentId": "fld_ef951f102f624a62a36451310323bb43",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "url": "{{ _.url }}/users/3",
+      "name": "Update User",
+      "description": "Update user data\n\n<!-- RESPONSE -->\n{\n    \"message\": \"User updated successfully\",\n    \"user\": {\n        \"id\": 3,\n        \"name\": \"teste update\",\n        \"email\": \"teste@email.com\",\n        \"created_at\": \"2021-08-06T06:01:33.000000Z\",\n        \"updated_at\": \"2021-08-06T06:02:07.000000Z\",\n        \"deleted_at\": null,\n        \"roles\": [\n            {\n                \"id\": 2,\n                \"name\": \"user\",\n                \"guard_name\": \"web\",\n                \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"pivot\": {\n                    \"model_id\": 3,\n                    \"role_id\": 2\n                }\n            }\n        ],\n        \"permissions\": [\n            {\n                \"id\": 1,\n                \"name\": \"show-users\",\n                \"guard_name\": \"web\",\n                \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"pivot\": {\n                    \"model_id\": 3,\n                    \"permission_id\": 1\n                }\n            },\n            {\n                \"id\": 2,\n                \"name\": \"create-users\",\n                \"guard_name\": \"web\",\n                \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"pivot\": {\n                    \"model_id\": 3,\n                    \"permission_id\": 2\n                }\n            },\n            {\n                \"id\": 3,\n                \"name\": \"update-users\",\n                \"guard_name\": \"web\",\n                \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"pivot\": {\n                    \"model_id\": 3,\n                    \"permission_id\": 3\n                }\n            },\n            {\n                \"id\": 4,\n                \"name\": \"delete-users\",\n                \"guard_name\": \"web\",\n                \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"pivot\": {\n                    \"model_id\": 3,\n                    \"permission_id\": 4\n                }\n            }\n        ]\n    }\n}\n<!-- ENDRESPONSE -->",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"userData\": {\n\t\t\"name\": \"teste update\",\n\t\t\"email\": \"teste@email.com\",\n\t\t\"password\": \"teste\",\n\t\t\"password_confirmation\": \"teste\"\n\t},\n\t\"roles\": [\n\t\t\"user\"\n\t],\n\t\"permissions\": [\n\t\t\"show-users\",\n\t\t\"create-users\",\n\t\t\"update-users\",\n\t\t\"delete-users\"\n\t]\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_ca8978166e4c4f44ae2daed0f3a37937",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_34ad9cb8dcfb4edbb7cc347c0a146c9f",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{token}}"
+      },
+      "metaSortKey": -1626324630893,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_6660dc3ef16c4fc79892b3c1538c619c",
+      "parentId": "fld_62367e1c757944819a2339ee33a767f9",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "url": "{{ _.url }}/permissions",
+      "name": "Store Permissions",
+      "description": "Create a permission\n\n<!-- RESPONSE -->\n{\n    \"message\": \"Permission created successfully\",\n    \"permission\": {\n        \"name\": \"teste\",\n        \"guard_name\": \"web\",\n        \"updated_at\": \"2021-08-06T06:34:19.000000Z\",\n        \"created_at\": \"2021-08-06T06:34:19.000000Z\",\n        \"id\": 13\n    }\n}\n<!-- ENDRESPONSE -->",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"teste\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_ca8978166e4c4f44ae2daed0f3a37937",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_44eead32da9c4fb0a1f9c20ed98b0285",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{token}}"
+      },
+      "metaSortKey": -1626366898333,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_6fd3ea3a7e44475280bf41205a78a847",
+      "parentId": "fld_62367e1c757944819a2339ee33a767f9",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "url": "{{ _.url }}/permissions/13",
+      "name": "Update Permissions",
+      "description": "Update a permission\n\n<!-- RESPONSE -->\n{\n    \"message\": \"Permission updated successfully\",\n    \"permission\": {\n        \"id\": 13,\n        \"name\": \"teste update\",\n        \"guard_name\": \"web\",\n        \"created_at\": \"2021-08-06T06:34:19.000000Z\",\n        \"updated_at\": \"2021-08-06T06:38:45.000000Z\"\n    }\n}\n<!-- ENDRESPONSE -->",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"teste update\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_ca8978166e4c4f44ae2daed0f3a37937",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_af19e790f667410a8f854050f6230d51",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{token}}"
+      },
+      "metaSortKey": -1626366898183,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_861194ea81db4eb1893d73f358ced211",
+      "parentId": "fld_7d6febcd4fbe4a3f8be8b73994c12a44",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "url": "{{ _.url }}/login",
+      "name": "Login",
+      "description": "Authenticate user\n\n<!-- RESPONSE -->\n{\n    \"message\": \"User logged in\",\n    \"token\": \"1|12FwsZHxBfEEfR2U8ZqZpI9XcTGGu0G1j9bQR9C1\",\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"admin\",\n        \"email\": \"admin@email.com\",\n        \"created_at\": \"2021-08-06T06:00:47.000000Z\",\n        \"updated_at\": \"2021-08-06T06:00:47.000000Z\",\n        \"deleted_at\": null,\n        \"roles\": [\n            {\n                \"id\": 1,\n                \"name\": \"admin\",\n                \"guard_name\": \"web\",\n                \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"pivot\": {\n                    \"model_id\": 1,\n                    \"role_id\": 1\n                }\n            }\n        ],\n        \"permissions\": []\n    }\n}\n<!-- ENDRESPONSE -->",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"admin@email.com\",\n\t\"password\": \"admin\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_b5d81ce4fc894fe58dd800d519bfe0f0",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_e730896b4d7f4358a06ac22bc7cf975e",
+          "disabled": false
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1626282363578,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_89d89b3b08314e8c97866b6f4479b552",
+      "parentId": "fld_62367e1c757944819a2339ee33a767f9",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "url": "{{ _.url }}/permissions/13",
+      "name": "Destroy Permissions",
+      "description": "Delete a permission\n\n<!-- RESPONSE -->\n{\n    \"message\": \"Permission deleted\"\n}\n<!-- ENDRESPONSE -->",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_92a4ca0b97564403b380859116186f9a",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_bebdc0d25cba45da8b7076008df39c9a",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{token}}"
+      },
+      "metaSortKey": -1626366898133,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_8f4a4a4dc3364eb2a8e7d2ce99907833",
+      "parentId": "fld_df3b31a4bcfb42fa90796d7c29eefaf6",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "url": "{{ _.url }}/roles/3",
+      "name": "Show Role",
+      "description": "Show a specific role\n\n<!-- RESPONSE -->\n{\n    \"role\": {\n        \"id\": 3,\n        \"name\": \"teste\",\n        \"guard_name\": \"web\",\n        \"created_at\": \"2021-08-06T06:08:35.000000Z\",\n        \"updated_at\": \"2021-08-06T06:08:35.000000Z\",\n        \"permissions\": [\n            {\n                \"id\": 1,\n                \"name\": \"show-users\",\n                \"guard_name\": \"web\",\n                \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"pivot\": {\n                    \"role_id\": 3,\n                    \"permission_id\": 1\n                }\n            }\n        ]\n    }\n}\n<!-- ENDRESPONSE -->",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_bebdc0d25cba45da8b7076008df39c9a",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_9cd2277fe34e48738b67074442a8aefa",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{token}}"
+      },
+      "metaSortKey": -1626366898283,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_90f26ad465f3467f822885440573cfc2",
+      "parentId": "fld_df3b31a4bcfb42fa90796d7c29eefaf6",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "url": "{{ _.url }}/roles/3",
+      "name": "Update Role",
+      "description": "Update a role\n\n<!-- RESPONSE -->\n{\n    \"message\": \"Role updated successfully\",\n    \"role\": {\n        \"id\": 3,\n        \"name\": \"teste update\",\n        \"guard_name\": \"web\",\n        \"created_at\": \"2021-08-06T06:08:35.000000Z\",\n        \"updated_at\": \"2021-08-06T06:09:08.000000Z\",\n        \"permissions\": [\n            {\n                \"id\": 5,\n                \"name\": \"show-roles\",\n                \"guard_name\": \"web\",\n                \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"pivot\": {\n                    \"role_id\": 3,\n                    \"permission_id\": 5\n                }\n            }\n        ]\n    }\n}\n<!-- ENDRESPONSE -->",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"teste update\",\n\t\"permissions\": [\n\t\t\"show-roles\"\n\t]\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_ca8978166e4c4f44ae2daed0f3a37937",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_317571f5bc344327aa8c3f5b6e7edbfe",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{token}}"
+      },
+      "metaSortKey": -1626366898183,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_97be5b3169754c84abb00421f77421eb",
+      "parentId": "fld_7d6febcd4fbe4a3f8be8b73994c12a44",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "url": "{{ _.url }}/logout",
+      "name": "Logout",
+      "description": "Logout user\n\n<!-- RESPONSE -->\n{\n    \"message\": \"User logged out\"\n}\n<!-- ENDRESPONSE -->",
+      "method": "POST",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_22946313aef44fb3a7f9d175dd0b4f80",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_173c7ce59e9442bb8b33e5db2fd9aed9",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{token}}",
+        "disabled": false,
+        "prefix": ""
+      },
+      "metaSortKey": -1626282363528,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_a774b2024b0a4169966d93e43ba83a9b",
+      "parentId": "fld_ef951f102f624a62a36451310323bb43",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "url": "{{ _.url }}/users/3",
+      "name": "Show User",
+      "description": "Show specific user\n\n<!-- RESPONSE -->\n{\n    \"user\": {\n        \"id\": 3,\n        \"name\": \"testes\",\n        \"email\": \"teste1@teste.com\",\n        \"created_at\": \"2021-08-06T06:01:33.000000Z\",\n        \"updated_at\": \"2021-08-06T06:01:33.000000Z\",\n        \"deleted_at\": null,\n        \"roles\": [\n            {\n                \"id\": 1,\n                \"name\": \"admin\",\n                \"guard_name\": \"web\",\n                \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"pivot\": {\n                    \"model_id\": 3,\n                    \"role_id\": 1\n                }\n            }\n        ],\n        \"permissions\": [\n            {\n                \"id\": 1,\n                \"name\": \"show-users\",\n                \"guard_name\": \"web\",\n                \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"pivot\": {\n                    \"model_id\": 3,\n                    \"permission_id\": 1\n                }\n            }\n        ]\n    }\n}\n<!-- ENDRESPONSE -->",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_bebdc0d25cba45da8b7076008df39c9a",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_5eb6df0a766a4feb911dc1591a53b74f",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{token}}"
+      },
+      "metaSortKey": -1626366898308,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_b00e01dab17d461cb4bc63983a98f44c",
+      "parentId": "fld_df3b31a4bcfb42fa90796d7c29eefaf6",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "url": "{{ _.url }}/roles",
+      "name": "Store Role",
+      "description": "Create a role\n\n<!-- RESPONSE -->\n{\n    \"message\": \"Role created successfully\",\n    \"role\": {\n        \"name\": \"teste\",\n        \"guard_name\": \"web\",\n        \"updated_at\": \"2021-08-06T06:08:35.000000Z\",\n        \"created_at\": \"2021-08-06T06:08:35.000000Z\",\n        \"id\": 3,\n        \"permissions\": [\n            {\n                \"id\": 1,\n                \"name\": \"show-users\",\n                \"guard_name\": \"web\",\n                \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"pivot\": {\n                    \"role_id\": 3,\n                    \"permission_id\": 1\n                }\n            }\n        ]\n    }\n}\n<!-- ENDRESPONSE -->",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"teste\",\n\t\"permissions\": [\"show-users\"]\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_ca8978166e4c4f44ae2daed0f3a37937",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_b48c134174384542960914fe792f75ea",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{token}}"
+      },
+      "metaSortKey": -1626366898333,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_bb2afdfa8dbc4f978655aabc640764b6",
+      "parentId": "fld_df3b31a4bcfb42fa90796d7c29eefaf6",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "url": "{{ _.url }}/roles",
+      "name": "Index Roles",
+      "description": "List all roles\n\n<!-- RESPONSE -->\n{\n    \"role\": [\n        {\n            \"id\": 1,\n            \"name\": \"admin\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n            \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n            \"permissions\": []\n        },\n        {\n            \"id\": 2,\n            \"name\": \"user\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n            \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n            \"permissions\": []\n        }\n    ]\n}\n<!-- ENDRESPONSE -->",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_bebdc0d25cba45da8b7076008df39c9a",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_fe43a945235a48a3a1ca20decfe1e9e7",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{token}}"
+      },
+      "metaSortKey": -1626366898383,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "jar_a09dda868299be22881743f949731ac11235392d",
+      "parentId": "wrk_9b8569ecfffc47e7835fe9b8fbe47ec9",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_f432d92d68834326915e61a9d87514f2",
+      "parentId": "wrk_9b8569ecfffc47e7835fe9b8fbe47ec9",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "fileName": "labeltag",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "env_a09dda868299be22881743f949731ac11235392d",
+      "parentId": "wrk_9b8569ecfffc47e7835fe9b8fbe47ec9",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "name": "Base Environment",
+      "data": {},
+      "dataPropertyOrder": {},
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1626280641277,
+      "_type": "environment"
+    },
+    {
+      "_id": "env_e3915a28de69469c809a45ac0403cbb1",
+      "parentId": "env_a09dda868299be22881743f949731ac11235392d",
+      "modified": 1600000000000,
+      "created": 1600000000000,
+      "name": "Development",
+      "data": {
+        "url": "http://localhost:8000/api",
+        "token": "1|LbUrm2Cf87AdqqHsOFckyaUGAJbVrboZQi6xmfjd"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "url",
+          "token"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1628015589899,
+      "_type": "environment"
+    }
+  ]
+}

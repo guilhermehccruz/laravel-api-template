@@ -1,0 +1,46 @@
+{
+  "_id": "req_6660dc3ef16c4fc79892b3c1538c619c",
+  "parentId": "fld_62367e1c757944819a2339ee33a767f9",
+  "modified": 1600000000000,
+  "created": 1600000000000,
+  "url": "{{ _.url }}/permissions",
+  "name": "Store Permissions",
+  "description": "Create a permission\n\n<!-- RESPONSE -->\n{\n    \"message\": \"Permission created successfully\",\n    \"permission\": {\n        \"name\": \"teste\",\n        \"guard_name\": \"web\",\n        \"updated_at\": \"2021-08-06T06:34:19.000000Z\",\n        \"created_at\": \"2021-08-06T06:34:19.000000Z\",\n        \"id\": 13\n    }\n}\n<!-- ENDRESPONSE -->",
+  "method": "POST",
+  "body": {
+    "mimeType": "application/json",
+    "text": [
+      "{",
+      "\t\"name\": \"teste\"",
+      "}"
+    ]
+  },
+  "parameters": [],
+  "headers": [
+    {
+      "id": "pair_ca8978166e4c4f44ae2daed0f3a37937",
+      "name": "Accept",
+      "value": "application/json",
+      "description": ""
+    },
+    {
+      "id": "pair_44eead32da9c4fb0a1f9c20ed98b0285",
+      "name": "Content-Type",
+      "value": "application/json",
+      "description": ""
+    }
+  ],
+  "authentication": {
+    "type": "bearer",
+    "token": "{{token}}"
+  },
+  "metaSortKey": -1626366898333,
+  "isPrivate": false,
+  "settingStoreCookies": true,
+  "settingSendCookies": true,
+  "settingDisableRenderRequestBody": false,
+  "settingEncodeUrl": true,
+  "settingRebuildPath": true,
+  "settingFollowRedirects": "global",
+  "_type": "request"
+}

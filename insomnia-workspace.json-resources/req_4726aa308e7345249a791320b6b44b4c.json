@@ -1,0 +1,39 @@
+{
+  "_id": "req_4726aa308e7345249a791320b6b44b4c",
+  "parentId": "fld_df3b31a4bcfb42fa90796d7c29eefaf6",
+  "modified": 1600000000000,
+  "created": 1600000000000,
+  "url": "{{ _.url }}/roles/8",
+  "name": "Destroy Role",
+  "description": "Delete a role \n\n<!-- RESPONSE -->\n{\n    \"message\": \"Role deleted\"\n}\n<!-- ENDRESPONSE -->",
+  "method": "DELETE",
+  "body": {},
+  "parameters": [],
+  "headers": [
+    {
+      "id": "pair_36f954c00d0c4724b895336fab54b83a",
+      "name": "Accept",
+      "value": "application/json",
+      "description": ""
+    },
+    {
+      "id": "pair_bebdc0d25cba45da8b7076008df39c9a",
+      "name": "Content-Type",
+      "value": "application/json",
+      "description": ""
+    }
+  ],
+  "authentication": {
+    "type": "bearer",
+    "token": "{{token}}"
+  },
+  "metaSortKey": -1626366898133,
+  "isPrivate": false,
+  "settingStoreCookies": true,
+  "settingSendCookies": true,
+  "settingDisableRenderRequestBody": false,
+  "settingEncodeUrl": true,
+  "settingRebuildPath": true,
+  "settingFollowRedirects": "global",
+  "_type": "request"
+}

@@ -1,0 +1,12 @@
+{
+  "_id": "fld_7d6febcd4fbe4a3f8be8b73994c12a44",
+  "parentId": "wrk_9b8569ecfffc47e7835fe9b8fbe47ec9",
+  "modified": 1600000000000,
+  "created": 1600000000000,
+  "name": "Auth",
+  "description": "",
+  "environment": {},
+  "environmentPropertyOrder": null,
+  "metaSortKey": -1626366851991,
+  "_type": "request_group"
+}

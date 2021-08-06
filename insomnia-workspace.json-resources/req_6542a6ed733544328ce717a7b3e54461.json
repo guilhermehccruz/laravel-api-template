@@ -1,0 +1,60 @@
+{
+  "_id": "req_6542a6ed733544328ce717a7b3e54461",
+  "parentId": "fld_ef951f102f624a62a36451310323bb43",
+  "modified": 1600000000000,
+  "created": 1600000000000,
+  "url": "{{ _.url }}/users/3",
+  "name": "Update User",
+  "description": "Update user data\n\n<!-- RESPONSE -->\n{\n    \"message\": \"User updated successfully\",\n    \"user\": {\n        \"id\": 3,\n        \"name\": \"teste update\",\n        \"email\": \"teste@email.com\",\n        \"created_at\": \"2021-08-06T06:01:33.000000Z\",\n        \"updated_at\": \"2021-08-06T06:02:07.000000Z\",\n        \"deleted_at\": null,\n        \"roles\": [\n            {\n                \"id\": 2,\n                \"name\": \"user\",\n                \"guard_name\": \"web\",\n                \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"pivot\": {\n                    \"model_id\": 3,\n                    \"role_id\": 2\n                }\n            }\n        ],\n        \"permissions\": [\n            {\n                \"id\": 1,\n                \"name\": \"show-users\",\n                \"guard_name\": \"web\",\n                \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"pivot\": {\n                    \"model_id\": 3,\n                    \"permission_id\": 1\n                }\n            },\n            {\n                \"id\": 2,\n                \"name\": \"create-users\",\n                \"guard_name\": \"web\",\n                \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"pivot\": {\n                    \"model_id\": 3,\n                    \"permission_id\": 2\n                }\n            },\n            {\n                \"id\": 3,\n                \"name\": \"update-users\",\n                \"guard_name\": \"web\",\n                \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"pivot\": {\n                    \"model_id\": 3,\n                    \"permission_id\": 3\n                }\n            },\n            {\n                \"id\": 4,\n                \"name\": \"delete-users\",\n                \"guard_name\": \"web\",\n                \"created_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"updated_at\": \"2021-08-06T06:00:46.000000Z\",\n                \"pivot\": {\n                    \"model_id\": 3,\n                    \"permission_id\": 4\n                }\n            }\n        ]\n    }\n}\n<!-- ENDRESPONSE -->",
+  "method": "PUT",
+  "body": {
+    "mimeType": "application/json",
+    "text": [
+      "{",
+      "\t\"userData\": {",
+      "\t\t\"name\": \"teste update\",",
+      "\t\t\"email\": \"teste@email.com\",",
+      "\t\t\"password\": \"teste\",",
+      "\t\t\"password_confirmation\": \"teste\"",
+      "\t},",
+      "\t\"roles\": [",
+      "\t\t\"user\"",
+      "\t],",
+      "\t\"permissions\": [",
+      "\t\t\"show-users\",",
+      "\t\t\"create-users\",",
+      "\t\t\"update-users\",",
+      "\t\t\"delete-users\"",
+      "\t]",
+      "}"
+    ]
+  },
+  "parameters": [],
+  "headers": [
+    {
+      "id": "pair_ca8978166e4c4f44ae2daed0f3a37937",
+      "name": "Content-Type",
+      "value": "application/json",
+      "description": ""
+    },
+    {
+      "id": "pair_34ad9cb8dcfb4edbb7cc347c0a146c9f",
+      "name": "Accept",
+      "value": "application/json",
+      "description": ""
+    }
+  ],
+  "authentication": {
+    "type": "bearer",
+    "token": "{{token}}"
+  },
+  "metaSortKey": -1626324630893,
+  "isPrivate": false,
+  "settingStoreCookies": true,
+  "settingSendCookies": true,
+  "settingDisableRenderRequestBody": false,
+  "settingEncodeUrl": true,
+  "settingRebuildPath": true,
+  "settingFollowRedirects": "global",
+  "_type": "request"
+}

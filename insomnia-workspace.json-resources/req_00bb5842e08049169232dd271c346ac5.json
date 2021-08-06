@@ -1,0 +1,39 @@
+{
+  "_id": "req_00bb5842e08049169232dd271c346ac5",
+  "parentId": "fld_62367e1c757944819a2339ee33a767f9",
+  "modified": 1600000000000,
+  "created": 1600000000000,
+  "url": "{{ _.url }}/permissions",
+  "name": "Index Permissions",
+  "description": "List all permissions\n\n<!-- RESPONSE -->\n{\n    \"permission\": [\n        {\n            \"id\": 1,\n            \"name\": \"show-users\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"create-users\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"update-users\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"delete-users\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"show-roles\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"create-roles\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"update-roles\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 8,\n            \"name\": \"delete-roles\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 9,\n            \"name\": \"show-permissions\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"create-permissions\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 11,\n            \"name\": \"update-permissions\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        },\n        {\n            \"id\": 12,\n            \"name\": \"delete-permissions\",\n            \"guard_name\": \"web\",\n            \"created_at\": \"2021-08-06T06:33:44.000000Z\",\n            \"updated_at\": \"2021-08-06T06:33:44.000000Z\"\n        }\n    ]\n}\n<!-- ENDRESPONSE -->",
+  "method": "GET",
+  "body": {},
+  "parameters": [],
+  "headers": [
+    {
+      "id": "pair_ca70571ff25848d0bc287c5182b2744e",
+      "name": "Accept",
+      "value": "application/json",
+      "description": ""
+    },
+    {
+      "id": "pair_bebdc0d25cba45da8b7076008df39c9a",
+      "name": "Content-Type",
+      "value": "application/json",
+      "description": ""
+    }
+  ],
+  "authentication": {
+    "type": "bearer",
+    "token": "{{token}}"
+  },
+  "metaSortKey": -1626366898383,
+  "isPrivate": false,
+  "settingStoreCookies": true,
+  "settingSendCookies": true,
+  "settingDisableRenderRequestBody": false,
+  "settingEncodeUrl": true,
+  "settingRebuildPath": true,
+  "settingFollowRedirects": "global",
+  "_type": "request"
+}
