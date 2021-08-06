@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UpdateUserRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		return true;
+		return Gate::authorize('update-users');
 	}
 
 	/**
@@ -23,21 +24,19 @@ class UpdateUserRequest extends FormRequest
 	 */
 	public function rules()
 	{
+		// dd($this->user);
 		return [
-			'user.name' => [
+			'userData.name' => [
 				'string'
 			],
-			'user.email' => [
+			'userData.email' => [
 				'string',
 				'email',
-				'unique:users,email,' . $this->id
+				'unique:users,email,' . $this->user
 			],
-			'user.password' => [
+			'userData.password' => [
 				'string',
 				'confirmed'
-			],
-			'user.status' => [
-				'boolean'
 			],
 
 			'roles' => [

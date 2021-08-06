@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -23,7 +24,6 @@ class User extends Authenticatable
 		'name',
 		'email',
 		'password',
-		'status',
 	];
 
 	/**
@@ -55,6 +55,6 @@ class User extends Authenticatable
 	 */
 	public function permissions()
 	{
-		return $this->belongsToMany(Role::class, 'model_has_permissions', 'model_id', 'permission_id');
+		return $this->belongsToMany(Permission::class, 'model_has_permissions', 'model_id', 'permission_id');
 	}
 }

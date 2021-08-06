@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class CreateUserRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class CreateUserRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		return true;
+		return Gate::authorize('create-users');
 	}
 
 	/**
@@ -24,23 +25,20 @@ class CreateUserRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'user.name' => [
+			'userData.name' => [
 				'required',
 				'string'
 			],
-			'user.email' => [
+			'userData.email' => [
 				'required',
 				'string',
 				'email',
-				'unique:users,email'
+				'unique:users,email,NULL,id,deleted_at,NULL'
 			],
-			'user.password' => [
+			'userData.password' => [
 				'required',
 				'string',
 				'confirmed'
-			],
-			'user.status' => [
-				'boolean'
 			],
 
 			'roles' => [

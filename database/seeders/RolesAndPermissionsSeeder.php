@@ -31,20 +31,20 @@ class RolesAndPermissionsSeeder extends Seeder
 
 		//* Permissions
 		$permissions = [
-			'showUsers',
-			'createUsers',
-			'updateUsers',
-			'deleteUsers',
+			'show-users',
+			'create-users',
+			'update-users',
+			'delete-users',
 
-			'showRoles',
-			'createRoles',
-			'updateRoles',
-			'deleteRoles',
+			'show-roles',
+			'create-roles',
+			'update-roles',
+			'delete-roles',
 
-			'showPermissions',
-			'createPermissions',
-			'updatePermissions',
-			'deletePermissions',
+			'show-permissions',
+			'create-permissions',
+			'update-permissions',
+			'delete-permissions',
 		];
 
 		foreach ($permissions as $permission) {

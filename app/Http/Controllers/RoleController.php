@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Role\CreateRoleRequest;
+use App\Http\Requests\Role\ShowRoleRequest;
+use App\Http\Requests\Role\UpdateRoleRequest;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -14,10 +17,8 @@ class RoleController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index()
+	public function index(ShowRoleRequest $request)
 	{
-		$this->authorize('showRoles');
-
 		try {
 			return response(['role' => Role::with('permissions')->get()]);
 		} catch (Exception $ex) {
@@ -34,27 +35,16 @@ class RoleController extends Controller
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request)
+	public function store(CreateRoleRequest $request)
 	{
-		$this->authorize('createRoles');
-
-		$role = $request->validate([
-			'name' => ['required', 'string', 'unique:roles,name']
-		]);
-
+		$role['name'] = $request->validated()['name'];
 		$role['guard_name'] = 'web';
-
-
-		$permissions = $request->validate([
-			'permissions' => 'array',
-			'permissions.*' => 'exists:permissions,name'
-		]);
 
 		try {
 			$role = Role::create($role);
 
-			if ($permissions)
-				$role->syncPermissions($permissions['permissions']);
+			if (isset($request->validated()['permissions']))
+				$role->syncPermissions($request->validated()['permissions']);
 
 			return response([
 				'message' => 'Role created successfully',
@@ -74,10 +64,8 @@ class RoleController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show($id)
+	public function show(ShowRoleRequest $request, $id)
 	{
-		$this->authorize('showRoles');
-
 		try {
 			return response(['role' => Role::with(['permissions'])->findOrFail($id)]);
 		} catch (Exception) {
@@ -92,24 +80,15 @@ class RoleController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id)
+	public function update(UpdateRoleRequest $request, $id)
 	{
-		$this->authorize('updateRoles');
-
-		$roleName = $request->validate(['name' => ['string', 'unique:roles,name,' . $id]]);
-
-		$permissions = $request->validate([
-			'permissions' => 'array',
-			'permissions.*' => 'exists:permissions,name'
-		]);
-
 		try {
 			$role = Role::findOrFail($id);
 
-			$role->update($roleName);
+			$role->update($request->validated());
 
-			if ($permissions)
-				$role->syncPermissions($permissions['permissions']);
+			if (isset($request->validated()['permissions']))
+				$role->syncPermissions($request->validated()['permissions']);
 
 			return response([
 				'message' => 'Role updated successfully',

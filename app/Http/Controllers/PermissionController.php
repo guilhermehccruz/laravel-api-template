@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Permission\CreatePermissionRequest;
+use App\Http\Requests\Permission\DeletePermissionRequest;
+use App\Http\Requests\Permission\ShowPermissionRequest;
+use App\Http\Requests\Permission\UpdatePermissionRequest;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -14,10 +18,8 @@ class PermissionController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index()
+	public function index(ShowPermissionRequest $request)
 	{
-		$this->authorize('showPermissions');
-
 		try {
 			return response(['permission' => Permission::all()]);
 		} catch (Exception $ex) {
@@ -28,21 +30,15 @@ class PermissionController extends Controller
 		}
 	}
 
-
 	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request)
+	public function store(CreatePermissionRequest $request)
 	{
-		$this->authorize('createPermissions');
-
-		$permission = $request->validate([
-			'name' => 'required|string|unique:permissions,name'
-		]);
-
+		$permission = $request->validated();
 		$permission['guard_name'] = 'web';
 
 		try {
@@ -64,10 +60,8 @@ class PermissionController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show($id)
+	public function show(ShowPermissionRequest $request, $id)
 	{
-		$this->authorize('showPermissions');
-
 		try {
 			return response(['permission' => Permission::findOrFail($id)]);
 		} catch (ModelNotFoundException) {
@@ -82,14 +76,11 @@ class PermissionController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id)
+	public function update(UpdatePermissionRequest $request, $id)
 	{
-		$this->authorize('updatePermissions');
-
 		try {
 			$permission = Permission::findOrFail($id);
-
-			$permission->update($request->validate(['name' => 'string']));
+			$permission->update($request->validated());
 
 			return response([
 				'message' => 'Permission updated successfully',
@@ -111,10 +102,8 @@ class PermissionController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id)
+	public function destroy(DeletePermissionRequest $request, $id)
 	{
-		$this->authorize('deletePermissions');
-
 		try {
 			Permission::findOrFail($id)->delete();
 

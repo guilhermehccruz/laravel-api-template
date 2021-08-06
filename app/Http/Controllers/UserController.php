@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateUserRequest;
-use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Requests\User\DeleteUserRequest;
+use App\Http\Requests\User\ShowUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\User;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -15,10 +17,8 @@ class UserController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index()
+	public function index(ShowUserRequest $request)
 	{
-		$this->authorize('showUsers');
-
 		try {
 			return response(['users' => User::with(['roles', 'permissions'])->paginate(15)]);
 		} catch (Exception $ex) {
@@ -32,15 +32,13 @@ class UserController extends Controller
 	/**
 	 * Store a newly created user in storage.
 	 *
-	 * @param  \App\Http\Requests\CreateUserRequest  $request
+	 * @param  \App\Http\Requests\User\CreateUserRequest  $request
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(CreateUserRequest $request)
 	{
-		$this->authorize('createUsers');
-
 		try {
-			$user = $request->validated()['user'];
+			$user = $request->validated()['userData'];
 
 			$user['password'] = bcrypt($user['password']);
 			$user = User::create($user);
@@ -63,10 +61,8 @@ class UserController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show($id)
+	public function show(ShowUserRequest $request, $id)
 	{
-		$this->authorize('showUsers');
-
 		try {
 			return response(['user' => User::with(['roles', 'permissions'])->findOrFail($id)]);
 		} catch (Exception) {
@@ -77,25 +73,28 @@ class UserController extends Controller
 	/**
 	 * Update the specified user in storage.
 	 *
-	 * @param  \App\Http\Requests\UpdateUserRequest  $request
+	 * @param  \App\Http\Requests\User\UpdateUserRequest  $request
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
 	public function update(UpdateUserRequest $request, $id)
 	{
-		$this->authorize('updateUser');
-
 		try {
 			$user = User::findOrFail($id);
 
-			if ($request->password)
-				$request->password = bcrypt($request->password);
+			if (isset($request->validated()['userData'])) {
+				$userData = $request->validated()['userData'];
+				if ($userData['password'])
+					$userData['password'] = bcrypt($userData['password']);
 
-			$user->update($request->validated()['user']);
+				$user->update($userData);
+			}
 
-			$user->syncRoles($request->validated()['roles']);
+			if (isset($request->validated()['roles']))
+				$user->syncRoles($request->validated()['roles']);
 
-			$user->syncPermissions($request->validated()['permissions']);
+			if (isset($request->validated()['permissions']))
+				$user->syncPermissions($request->validated()['permissions']);
 
 			return response([
 				'message' => 'User updated successfully',
@@ -117,10 +116,8 @@ class UserController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id)
+	public function destroy(DeleteUserRequest $request, $id)
 	{
-		$this->authorize('deleteUser');
-
 		try {
 			User::findOrFail($id)->delete();
 

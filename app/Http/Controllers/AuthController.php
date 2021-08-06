@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-	public function login(Request $request)
+	public function login(LoginRequest $request)
 	{
-		$credentials = $request->validate([
-			'email' => 'required|string|exists:users,email',
-			'password' => 'required|string',
-		]);
+		$credentials = $request->validated();
 
-		$user = User::where('email', $credentials['email'])->first();
+		$user = User::with(['roles', 'permissions'])->where('email', $credentials['email'])->first();
 
 		if (!$user or !Hash::check($credentials['password'], $user->password)) {
 			return response([
@@ -27,8 +25,8 @@ class AuthController extends Controller
 
 		return response([
 			'message' => 'User logged in',
+			'token' => $token,
 			'user' => $user,
-			'token' => $token
 		]);
 	}
 
