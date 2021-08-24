@@ -8,21 +8,21 @@ use App\Http\Requests\User\ShowUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\User;
 use Exception;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
 {
 	/**
 	 * Display a listing of users.
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function index(ShowUserRequest $request)
+	public function index(ShowUserRequest $request): JsonResponse
 	{
 		try {
-			return response(['users' => User::with(['roles', 'permissions'])->paginate(15)]);
+			return response()->json(['users' => User::with(['roles', 'permissions'])->paginate(15)]);
 		} catch (Exception $ex) {
-			return response([
+			return response()->json([
 				'message' => 'An error has ocurred',
 				'error' => $ex->getMessage()
 			], 500);
@@ -33,15 +33,12 @@ class UserController extends Controller
 	 * Store a newly created user in storage.
 	 *
 	 * @param  \App\Http\Requests\User\CreateUserRequest  $request
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function store(CreateUserRequest $request)
+	public function store(CreateUserRequest $request): JsonResponse
 	{
 		try {
-			$user = $request->validated()['userData'];
-
-			$user['password'] = bcrypt($user['password']);
-			$user = User::create($user);
+			$user = User::create($request->validated()['userData']);
 
 			if ($request->validated()['roles'])
 				$user->syncRoles($request->validated()['roles']);
@@ -49,9 +46,9 @@ class UserController extends Controller
 			if ($request->validated()['permissions'])
 				$user->syncPermissions($request->validated()['permissions']);
 
-			return response(['message' => 'User created successfully', 'user' => $user], 201);
+			return response()->json(['message' => 'User created successfully', 'user' => $user], 201);
 		} catch (Exception $ex) {
-			return response(['error' => $ex->getMessage()]);
+			return response()->json(['error' => $ex->getMessage()]);
 		}
 	}
 
@@ -59,15 +56,11 @@ class UserController extends Controller
 	 * Display the specified user.
 	 *
 	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function show(ShowUserRequest $request, $id)
+	public function show(ShowUserRequest $request, User $user): JsonResponse
 	{
-		try {
-			return response(['user' => User::with(['roles', 'permissions'])->findOrFail($id)]);
-		} catch (ModelNotFoundException $ex) {
-			return response(['error' => 'User not found'], 404);
-		}
+		return response()->json(['user' => $user->load(['roles', 'permissions'])]);
 	}
 
 	/**
@@ -75,19 +68,13 @@ class UserController extends Controller
 	 *
 	 * @param  \App\Http\Requests\User\UpdateUserRequest  $request
 	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function update(UpdateUserRequest $request, $id)
+	public function update(UpdateUserRequest $request, User $user): JsonResponse
 	{
 		try {
-			$user = User::findOrFail($id);
-
 			if (isset($request->validated()['userData'])) {
-				$userData = $request->validated()['userData'];
-				if ($userData['password'])
-					$userData['password'] = bcrypt($userData['password']);
-
-				$user->update($userData);
+				$user->update($request->validated()['userData']);
 			}
 
 			if (isset($request->validated()['roles']))
@@ -96,14 +83,12 @@ class UserController extends Controller
 			if (isset($request->validated()['permissions']))
 				$user->syncPermissions($request->validated()['permissions']);
 
-			return response([
+			return response()->json([
 				'message' => 'User updated successfully',
 				'user' => $user
 			]);
-		} catch (ModelNotFoundException $ex) {
-			return response(['error' => 'User not found'], 404);
 		} catch (Exception $ex) {
-			return response([
+			return response()->json([
 				'message' => 'An error has ocurred',
 				'error' => $ex->getMessage()
 			], 500);
@@ -114,16 +99,12 @@ class UserController extends Controller
 	 * Remove the specified user from storage.
 	 *
 	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function destroy(DeleteUserRequest $request, $id)
+	public function destroy(DeleteUserRequest $request, User $user): JsonResponse
 	{
-		try {
-			User::findOrFail($id)->delete();
+		$user->delete();
 
-			return response(['message' => 'User deleted']);
-		} catch (ModelNotFoundException $ex) {
-			return response(['error' => 'User not found'], 404);
-		}
+		return response()->json(['message' => 'User deleted']);
 	}
 }

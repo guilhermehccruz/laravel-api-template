@@ -16,7 +16,7 @@ class UsersSeeder extends Seeder
 	{
 		$users = [
 			[
-				[
+				'user' => [
 					'name' => 'admin',
 					'email' => 'admin@email.com',
 					'password' => 'admin'
@@ -26,7 +26,7 @@ class UsersSeeder extends Seeder
 				]
 			],
 			[
-				[
+				'user' => [
 					'name' => 'user',
 					'email' => 'user@email.com',
 					'password' => 'user'
@@ -38,9 +38,7 @@ class UsersSeeder extends Seeder
 		];
 
 		foreach ($users as $user) {
-			$user[0]['password'] = bcrypt($user[0]['password']);
-			$createdUser = User::create($user[0]);
-			$createdUser->syncRoles($user['role']);
+			User::create($user['user'])->syncRoles($user['role']);
 		}
 	}
 }

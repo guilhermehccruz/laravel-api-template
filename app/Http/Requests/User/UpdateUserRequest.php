@@ -24,7 +24,6 @@ class UpdateUserRequest extends FormRequest
 	 */
 	public function rules()
 	{
-		// dd($this->user);
 		return [
 			'userData.name' => [
 				'string'

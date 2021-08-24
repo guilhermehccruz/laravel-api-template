@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Role\CreateRoleRequest;
+use App\Http\Requests\Role\DeleteRoleRequest;
 use App\Http\Requests\Role\ShowRoleRequest;
 use App\Http\Requests\Role\UpdateRoleRequest;
 use Exception;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
@@ -15,14 +15,14 @@ class RoleController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function index(ShowRoleRequest $request)
+	public function index(ShowRoleRequest $request): JsonResponse
 	{
 		try {
-			return response(['role' => Role::with('permissions')->get()]);
+			return response()->json(['role' => Role::with('permissions')->get()]);
 		} catch (Exception $ex) {
-			return response([
+			return response()->json([
 				'message' => 'An error has occurred',
 				'error' => $ex->getMessage()
 			], 500);
@@ -33,9 +33,9 @@ class RoleController extends Controller
 	 * Store a newly created resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function store(CreateRoleRequest $request)
+	public function store(CreateRoleRequest $request): JsonResponse
 	{
 		$role['name'] = $request->validated()['name'];
 		$role['guard_name'] = 'web';
@@ -46,12 +46,12 @@ class RoleController extends Controller
 			if (isset($request->validated()['permissions']))
 				$role->syncPermissions($request->validated()['permissions']);
 
-			return response([
+			return response()->json([
 				'message' => 'Role created successfully',
 				'role' => $role
 			], 201);
 		} catch (Exception $ex) {
-			return response([
+			return response()->json([
 				'message' => 'Ocorreu um erro',
 				'error' => $ex->getMessage()
 			]);
@@ -62,15 +62,11 @@ class RoleController extends Controller
 	 * Display the specified resource.
 	 *
 	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function show(ShowRoleRequest $request, $id)
+	public function show(ShowRoleRequest $request, Role $role): JsonResponse
 	{
-		try {
-			return response(['role' => Role::with(['permissions'])->findOrFail($id)]);
-		} catch (ModelNotFoundException $ex) {
-			return response(['message' => 'Role not found'], 404);
-		}
+		return response()->json(['role' => $role->load(['permissions'])]);
 	}
 
 	/**
@@ -78,26 +74,25 @@ class RoleController extends Controller
 	 *
 	 * @param  \Illuminate\Http\Request  $request
 	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function update(UpdateRoleRequest $request, $id)
+	public function update(UpdateRoleRequest $request, Role $role): JsonResponse
 	{
 		try {
-			$role = Role::findOrFail($id);
-
 			$role->update($request->validated());
 
 			if (isset($request->validated()['permissions']))
 				$role->syncPermissions($request->validated()['permissions']);
 
-			return response([
+			return response()->json([
 				'message' => 'Role updated successfully',
 				'role' => $role
 			]);
-		} catch (ModelNotFoundException $ex) {
-			return response(['message' => 'Role not found'], 404);
 		} catch (Exception $ex) {
-			return response(['message' => 'Ocorreu um erro', 'error' => $ex->getMessage()]);
+			return response()->json([
+				'message' => 'Ocorreu um erro',
+				'error' => $ex->getMessage()
+			]);
 		}
 	}
 
@@ -105,18 +100,12 @@ class RoleController extends Controller
 	 * Remove the specified resource from storage.
 	 *
 	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function destroy($id)
+	public function destroy(DeleteRoleRequest $request, Role $role): JsonResponse
 	{
-		$this->authorize('deleteRoles');
+		$role->delete();
 
-		try {
-			Role::findOrFail($id)->delete();
-
-			return response(['message' => 'Role deleted']);
-		} catch (ModelNotFoundException $ex) {
-			return response(['error' => 'Role not found'], 404);
-		}
+		return response()->json(['message' => 'Role deleted']);
 	}
 }

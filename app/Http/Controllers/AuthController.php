@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+	/**
+	 * Authenticates the user.
+	 *
+	 * @param \App\Http\Requests\LoginRequest $request
+	 * @return \Illuminate\Http\Response
+	 */
 	public function login(LoginRequest $request)
 	{
 		$credentials = $request->validated();
@@ -20,15 +26,18 @@ class AuthController extends Controller
 			], 400);
 		}
 
-		$token = $user->createToken('token')->plainTextToken;
-
 		return response([
 			'message' => 'User logged in',
-			'token' => $token,
+			'token' => $user->createToken('token')->plainTextToken,
 			'user' => $user,
 		]);
 	}
 
+	/**
+	 *  Unauthenticates the user.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
 	public function logout()
 	{
 		auth()->user()->tokens()->delete();

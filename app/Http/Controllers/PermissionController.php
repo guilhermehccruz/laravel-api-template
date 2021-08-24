@@ -7,8 +7,7 @@ use App\Http\Requests\Permission\DeletePermissionRequest;
 use App\Http\Requests\Permission\ShowPermissionRequest;
 use App\Http\Requests\Permission\UpdatePermissionRequest;
 use Exception;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
@@ -16,14 +15,14 @@ class PermissionController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function index(ShowPermissionRequest $request)
+	public function index(ShowPermissionRequest $request): JsonResponse
 	{
 		try {
-			return response(['permission' => Permission::all()]);
+			return response()->json(['permission' => Permission::all()]);
 		} catch (Exception $ex) {
-			return response([
+			return response()->json([
 				'message' => 'An error has occurred',
 				'error' => $ex->getMessage()
 			], 500);
@@ -34,20 +33,20 @@ class PermissionController extends Controller
 	 * Store a newly created resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function store(CreatePermissionRequest $request)
+	public function store(CreatePermissionRequest $request): JsonResponse
 	{
 		$permission = $request->validated();
 		$permission['guard_name'] = 'web';
 
 		try {
-			return response([
+			return response()->json([
 				'message' => 'Permission created successfully',
 				'permission' => Permission::create($permission)
 			], 201);
 		} catch (Exception $ex) {
-			return response([
+			return response()->json([
 				'message' => 'An error has occurred',
 				'error' => $ex->getMessage()
 			]);
@@ -58,15 +57,11 @@ class PermissionController extends Controller
 	 * Display the specified resource.
 	 *
 	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function show(ShowPermissionRequest $request, $id)
+	public function show(ShowPermissionRequest $request, Permission $permission): JsonResponse
 	{
-		try {
-			return response(['permission' => Permission::findOrFail($id)]);
-		} catch (ModelNotFoundException $ex) {
-			return response(['message' => 'Permission not found'], 404);
-		}
+		return response()->json(['permission' => $permission]);
 	}
 
 	/**
@@ -74,22 +69,19 @@ class PermissionController extends Controller
 	 *
 	 * @param  \Illuminate\Http\Request  $request
 	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function update(UpdatePermissionRequest $request, $id)
+	public function update(UpdatePermissionRequest $request, Permission $permission): JsonResponse
 	{
 		try {
-			$permission = Permission::findOrFail($id);
 			$permission->update($request->validated());
 
-			return response([
+			return response()->json([
 				'message' => 'Permission updated successfully',
 				'permission' => $permission
 			]);
-		} catch (ModelNotFoundException $ex) {
-			return response(['message' => 'Permission not found'], 404);
 		} catch (Exception $ex) {
-			return response([
+			return response()->json([
 				'message' => 'An error has occurred',
 				'error' => $ex->getMessage()
 			]);
@@ -100,16 +92,12 @@ class PermissionController extends Controller
 	 * Remove the specified resource from storage.
 	 *
 	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function destroy(DeletePermissionRequest $request, $id)
+	public function destroy(DeletePermissionRequest $request, Permission $permission): JsonResponse
 	{
-		try {
-			Permission::findOrFail($id)->delete();
+		$permission->delete();
 
-			return response(['message' => 'Permission deleted']);
-		} catch (ModelNotFoundException $ex) {
-			return response(['error' => 'Permission not found'], 404);
-		}
+		return response()->json(['message' => 'Permission deleted']);
 	}
 }

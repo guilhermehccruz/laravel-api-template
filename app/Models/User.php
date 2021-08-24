@@ -43,6 +43,17 @@ class User extends Authenticatable
 	protected $casts = [];
 
 	/**
+	 * Encrypt the user's password.
+	 *
+	 * @param  string  $password
+	 */
+	public function setPasswordAttribute($password)
+	{
+		$this->attributes['password'] = bcrypt($password);
+	}
+
+
+	/**
 	 * The attributes that should be cast to native types.
 	 */
 	public function roles()
