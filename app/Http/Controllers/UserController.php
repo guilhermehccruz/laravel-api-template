@@ -40,10 +40,10 @@ class UserController extends Controller
 		try {
 			$user = User::create($request->validated()['userData']);
 
-			if ($request->validated()['roles'])
+			if (isset($request->validated()['roles']))
 				$user->syncRoles($request->validated()['roles']);
 
-			if ($request->validated()['permissions'])
+			if (isset($request->validated()['permissions']))
 				$user->syncPermissions($request->validated()['permissions']);
 
 			return response()->json(['message' => 'User created successfully', 'user' => $user], 201);
