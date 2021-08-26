@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -12,9 +13,9 @@ class AuthController extends Controller
 	 * Authenticates the user.
 	 *
 	 * @param \App\Http\Requests\LoginRequest $request
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function login(LoginRequest $request)
+	public function login(LoginRequest $request): JsonResponse
 	{
 		$credentials = $request->validated();
 
@@ -26,9 +27,9 @@ class AuthController extends Controller
 			], 400);
 		}
 
-		return response([
+		return response()->json([
 			'message' => 'User logged in',
-			'token' => $user->createToken('token')->plainTextToken,
+			'token' => $user->createToken($user->password)->plainTextToken,
 			'user' => $user,
 		]);
 	}
@@ -36,12 +37,12 @@ class AuthController extends Controller
 	/**
 	 *  Unauthenticates the user.
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function logout()
+	public function logout(): JsonResponse
 	{
 		auth()->user()->tokens()->delete();
 
-		return response(['message' => 'User logged out']);
+		return response()->json(['message' => 'User logged out']);
 	}
 }
