@@ -22,7 +22,7 @@ class AuthController extends Controller
 		$user = User::with(['roles', 'permissions'])->where('email', $credentials['email'])->first();
 
 		if (!$user or !Hash::check($credentials['password'], $user->password)) {
-			return response([
+			return response()->json([
 				'message' => 'Incorrect email or password'
 			], 400);
 		}
