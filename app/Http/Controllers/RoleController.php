@@ -20,14 +20,7 @@ class RoleController extends Controller
 	 */
 	public function index(ShowRoleRequest $request): JsonResponse
 	{
-		try {
-			return response()->json(['role' => Role::with('permissions')->get()]);
-		} catch (Exception $ex) {
-			return response()->json([
-				'message' => 'An error has occurred',
-				'error' => $ex->getMessage()
-			], 500);
-		}
+		return response()->json(['role' => Role::with('permissions')->get()]);
 	}
 
 	/**
@@ -41,22 +34,15 @@ class RoleController extends Controller
 		$role['name'] = $request->validated()['name'];
 		$role['guard_name'] = 'web';
 
-		try {
-			$role = Role::create($role);
+		$role = Role::create($role);
 
-			if (isset($request->validated()['permissions']))
-				$role->syncPermissions($request->validated()['permissions']);
+		if (isset($request->validated()['permissions']))
+			$role->syncPermissions($request->validated()['permissions']);
 
-			return response()->json([
-				'message' => 'Role created successfully',
-				'role' => $role
-			], 201);
-		} catch (Exception $ex) {
-			return response()->json([
-				'message' => 'Ocorreu um erro',
-				'error' => $ex->getMessage()
-			]);
-		}
+		return response()->json([
+			'message' => 'Role created successfully',
+			'role' => $role
+		], 201);
 	}
 
 	/**
@@ -80,22 +66,15 @@ class RoleController extends Controller
 	 */
 	public function update(UpdateRoleRequest $request, Role $role): JsonResponse
 	{
-		try {
-			$role->update($request->validated());
+		$role->update($request->validated());
 
-			if (isset($request->validated()['permissions']))
-				$role->syncPermissions($request->validated()['permissions']);
+		if (isset($request->validated()['permissions']))
+			$role->syncPermissions($request->validated()['permissions']);
 
-			return response()->json([
-				'message' => 'Role updated successfully',
-				'role' => $role
-			]);
-		} catch (Exception $ex) {
-			return response()->json([
-				'message' => 'Ocorreu um erro',
-				'error' => $ex->getMessage()
-			]);
-		}
+		return response()->json([
+			'message' => 'Role updated successfully',
+			'role' => $role
+		]);
 	}
 
 	/**

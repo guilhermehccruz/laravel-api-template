@@ -19,14 +19,7 @@ class PermissionController extends Controller
 	 */
 	public function index(ShowPermissionRequest $request): JsonResponse
 	{
-		try {
-			return response()->json(['permission' => Permission::all()]);
-		} catch (Exception $ex) {
-			return response()->json([
-				'message' => 'An error has occurred',
-				'error' => $ex->getMessage()
-			], 500);
-		}
+		return response()->json(['permission' => Permission::all()]);
 	}
 
 	/**
@@ -40,17 +33,10 @@ class PermissionController extends Controller
 		$permission = $request->validated();
 		$permission['guard_name'] = 'web';
 
-		try {
-			return response()->json([
-				'message' => 'Permission created successfully',
-				'permission' => Permission::create($permission)
-			], 201);
-		} catch (Exception $ex) {
-			return response()->json([
-				'message' => 'An error has occurred',
-				'error' => $ex->getMessage()
-			]);
-		}
+		return response()->json([
+			'message' => 'Permission created successfully',
+			'permission' => Permission::create($permission)
+		], 201);
 	}
 
 	/**
@@ -74,19 +60,12 @@ class PermissionController extends Controller
 	 */
 	public function update(UpdatePermissionRequest $request, Permission $permission): JsonResponse
 	{
-		try {
-			$permission->update($request->validated());
+		$permission->update($request->validated());
 
-			return response()->json([
-				'message' => 'Permission updated successfully',
-				'permission' => $permission
-			]);
-		} catch (Exception $ex) {
-			return response()->json([
-				'message' => 'An error has occurred',
-				'error' => $ex->getMessage()
-			]);
-		}
+		return response()->json([
+			'message' => 'Permission updated successfully',
+			'permission' => $permission
+		]);
 	}
 
 	/**
