@@ -14,7 +14,7 @@ class PermissionController extends Controller
 {
 	/**
 	 * Display a listing of the resource.
-	 *
+	 * @param \App\Http\Requests\Permission\ShowPermissionRequest $request
 	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function index(ShowPermissionRequest $request): JsonResponse
@@ -32,7 +32,7 @@ class PermissionController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \App\Http\Requests\Permission\CreatePermissionRequest $request
 	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function store(CreatePermissionRequest $request): JsonResponse
@@ -56,7 +56,8 @@ class PermissionController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  \App\Http\Requests\Permission\ShowPermissionRequest $request
+	 * @param  \Spatie\Permission\Models\Permission  $permission
 	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function show(ShowPermissionRequest $request, Permission $permission): JsonResponse
@@ -67,8 +68,8 @@ class PermissionController extends Controller
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  int  $id
+	 * @param  \App\Http\Requests\Permission\UpdatePermissionRequest $request
+	 * @param  \Spatie\Permission\Models\Permission  $permission
 	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function update(UpdatePermissionRequest $request, Permission $permission): JsonResponse
@@ -91,7 +92,8 @@ class PermissionController extends Controller
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  \App\Http\Requests\Permission\DeletePermissionRequest $request
+	 * @param  \Spatie\Permission\Models\Permission  $permission
 	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function destroy(DeletePermissionRequest $request, Permission $permission): JsonResponse

@@ -15,18 +15,12 @@ class UserController extends Controller
 	/**
 	 * Display a listing of users.
 	 *
+	 * @param  \App\Http\Requests\User\ShowUserRequest  $request
 	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function index(ShowUserRequest $request): JsonResponse
 	{
-		try {
-			return response()->json(['users' => User::with(['roles', 'permissions'])->paginate(15)]);
-		} catch (Exception $ex) {
-			return response()->json([
-				'message' => 'An error has ocurred',
-				'error' => $ex->getMessage()
-			], 500);
-		}
+		return response()->json(['users' => User::with(['roles', 'permissions'])->paginate()]);
 	}
 
 	/**
@@ -46,16 +40,23 @@ class UserController extends Controller
 			if (isset($request->validated()['permissions']))
 				$user->syncPermissions($request->validated()['permissions']);
 
-			return response()->json(['message' => 'User created successfully', 'user' => $user], 201);
+			return response()->json([
+				'message' => 'User created successfully',
+				'user' => $user
+			], 201);
 		} catch (Exception $ex) {
-			return response()->json(['error' => $ex->getMessage()]);
+			return response()->json(
+				['error' => $ex->getMessage()],
+				500
+			);
 		}
 	}
 
 	/**
 	 * Display the specified user.
 	 *
-	 * @param  int  $id
+	 * @param  \App\Http\Requests\User\ShowUserRequest  $request
+	 * @param  \App\Models\User $user
 	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function show(ShowUserRequest $request, User $user): JsonResponse
@@ -67,14 +68,14 @@ class UserController extends Controller
 	 * Update the specified user in storage.
 	 *
 	 * @param  \App\Http\Requests\User\UpdateUserRequest  $request
-	 * @param  int  $id
+	 * @param  \App\Models\User $user
 	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function update(UpdateUserRequest $request, User $user): JsonResponse
 	{
 		try {
-			if (isset($request->validated()['userData'])) {
-				$user->update($request->validated()['userData']);
+			if (isset($request->validated()['user'])) {
+				$user->update($request->validated()['user']);
 			}
 
 			if (isset($request->validated()['roles']))
@@ -89,7 +90,6 @@ class UserController extends Controller
 			]);
 		} catch (Exception $ex) {
 			return response()->json([
-				'message' => 'An error has ocurred',
 				'error' => $ex->getMessage()
 			], 500);
 		}
@@ -98,7 +98,8 @@ class UserController extends Controller
 	/**
 	 * Remove the specified user from storage.
 	 *
-	 * @param  int  $id
+	 * @param  \App\Http\Requests\User\DeleteUserRequest  $request
+	 * @param  \App\Models\User $user
 	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function destroy(DeleteUserRequest $request, User $user): JsonResponse

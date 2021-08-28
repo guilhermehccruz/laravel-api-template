@@ -15,6 +15,7 @@ class RoleController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
+	 * @param \App\Http\Requests\Role\ShowRoleRequest $request
 	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function index(ShowRoleRequest $request): JsonResponse
@@ -32,7 +33,7 @@ class RoleController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
+	 * @param \App\Http\Requests\Role\CreateRoleRequest $request
 	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function store(CreateRoleRequest $request): JsonResponse
@@ -61,7 +62,8 @@ class RoleController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param \App\Http\Requests\Role\ShowRoleRequest $request
+	 * @param  \Spatie\Permission\Models\Role $role
 	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function show(ShowRoleRequest $request, Role $role): JsonResponse
@@ -72,8 +74,8 @@ class RoleController extends Controller
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  int  $id
+	 * @param \App\Http\Requests\Role\UpdateRoleRequest $request
+	 * @param  \Spatie\Permission\Models\Role $role
 	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function update(UpdateRoleRequest $request, Role $role): JsonResponse
@@ -99,7 +101,8 @@ class RoleController extends Controller
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param \App\Http\Requests\Role\DeleteRoleRequest $request
+	 * @param  \Spatie\Permission\Models\Role $role
 	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function destroy(DeleteRoleRequest $request, Role $role): JsonResponse

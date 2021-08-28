@@ -1,4 +1,5 @@
-# How to install the project
+# WBarcelos
+## How to install the project
 
 * PHP recommended version `8.0`
 

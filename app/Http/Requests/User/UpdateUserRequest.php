@@ -25,15 +25,15 @@ class UpdateUserRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'userData.name' => [
+			'user.name' => [
 				'string'
 			],
-			'userData.email' => [
+			'user.email' => [
 				'string',
 				'email',
-				'unique:users,email,' . $this->user
+				'unique:users,email,' . $this->route()->user->id . ',id,deleted_at,NULL'
 			],
-			'userData.password' => [
+			'user.password' => [
 				'string',
 				'confirmed'
 			],
