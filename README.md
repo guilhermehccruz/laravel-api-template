@@ -4,12 +4,12 @@
 
 1. Clone the project
 ```
-git clone https://github.com/guilhermehccruz/laravel-api-template.git
+	git clone https://github.com/guilhermehccruz/laravel-api-template.git
 ```
 
 2. Install composer dependencies
 ```
-composer install
+	composer install
 ```
 
 3. Create the environment file
