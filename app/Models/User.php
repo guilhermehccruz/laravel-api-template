@@ -54,7 +54,7 @@ class User extends Authenticatable
 
 
 	/**
-	 * The attributes that should be cast to native types.
+	 * The roles this user has.
 	 */
 	public function roles()
 	{
@@ -62,7 +62,7 @@ class User extends Authenticatable
 	}
 
 	/**
-	 * The attributes that should be cast to native types.
+	 * The permissions this user has.
 	 */
 	public function permissions()
 	{
